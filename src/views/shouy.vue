@@ -36,7 +36,7 @@
             <van-grid-item icon="photo-o" text="文字"/>
         </van-grid>
         <!---->
-        <div class="js" v-for="(item,index) in good" :key="index">
+        <div class="js" v-for="(item,index) in good" :key="index" v-if="index!==1">
             <div class="tis">
                 <p class="tis_1">{{item.channel_info.name}}</p>
                 <p class="tis_2">更多></p>
@@ -58,7 +58,27 @@
         </div>
         <!---->
         
-        
+         <div class="js" v-for="(item,key) in good" :key="key" v-if="key===1">
+            <div class="tis">
+                <p class="tis_1">{{item.channel_info.name}}</p>
+                <p class="tis_2">更多></p>
+            </div>
+            <div class="tis_di" v-for="(it,k) in item.list" :key="k">
+                <div class="di_1">
+                    <div class="im">
+                        <img
+                            :src="it.cover_img"
+                            alt=""
+                        >
+                    </div>
+                    <div class="di_2">
+                        <p>{{it.title}}</p>
+                        <span>{{it.sales_num}}人已报名</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---->
         <div class="tb"></div>
     </div>
 </template>
@@ -79,6 +99,7 @@ export default {
     let list = await appIndex()
     console.log(list.data.data)
     this.good=list.data.data
+    console.log(this.good)
   },
   
   mounted() {},

@@ -52,7 +52,7 @@ export default {
     // this.getList();
   },
   async created() {
-    let res = await smsCode({ mobile: 17633344210, sms_type: "login" });
+    let res = await smsCode({ mobile: 'this.phone', sms_type: "login" });
     console.log(res);
       let list = await smsCode({ mobile: 17633344210, sms_type: "login",password:"" });
     console.log(list);
@@ -64,6 +64,7 @@ export default {
         this.$notify("手机号格式错误");
         return false;
       } else {
+          
       }
     }
   }

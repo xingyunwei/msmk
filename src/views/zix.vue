@@ -1,25 +1,23 @@
 <template>
-    <div>
-咨询
+    <div class="zix">
+       
     </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-
-        };
-    },
-    mounted() {
-
-    },
-    methods: {
-
-    },
+  data() {
+    return {};
+  },
+  mounted() {},
+  methods: {}
 };
 </script>
 
-<style scoped lang >
-
+<style scoped lang="scss" >
+.zix {
+  width: 100%;
+  height: 100%;
+  background: #f7f8fa;
+}
 </style>

@@ -10,20 +10,19 @@
         <!---->
         <div class="login">
             <div class="itp_num">
-                <input class="iptuser" v-model="mobile" placeholder="请输入手机号">
-                <div class="getCAPTCHA" @click="add">获取验证码</div>
+                <input class="iptuser"  placeholder="请输入手机号">
             </div>
             <div class="itp_num">
-                <input class="iptuser" v-model="sms" placeholder="请输入短信验证码">
+                <input class="iptuser" placeholder="请输入密码">
             </div>
             <div class="others">
-                <span class="forget">*未注册的手机号将自动注册</span>
-                <span class="login_CAPTCHA" @click="$router.push('/logins')">使用密码登录</span>
+                <p class="forget">*未注册的手机号将自动注册</p>
+                <p class="login_CAPTCHA" ><span>注册</span>/<span @click="$router.push('/login')">验证码登录</span></p>
             </div>
         </div>
         <!---->
         <div class="logins">
-            <p class="p login-btn" @click="logi">登录</p>
+            <p class="p login-btn" >登录</p>
             <div class="login-info">
                 <img
                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzY0RTVCOTQ1QUEyMTFFQUIzQzNDMEVBNEQ3QkEyNEIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzY0RTVCOTM1QUEyMTFFQUIzQzNDMEVBNEQ3QkEyNEIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGRDcxMEU1ODVBN0YxMUVBQjNDM0MwRUE0RDdCQTI0QiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMDNCOTRDNjVBODAxMUVBQjNDM0MwRUE0RDdCQTI0QiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PjuKVAAAAAK7SURBVHjaxJjLaxNRFMZP7oSC8dE0CUpaKYoRF2n1H7BdiIsqrdFlWjE1VRcVFKwRXLgRX0FJ8RkUE3UhbhXjE0Wx7hRF1JVdmnRjIoEajJDoOfEMjElmOo9M/OCDLGYmv7n33Hu/M44ceMCAAugQehDdg/ajfeg8OofOomfQd9Gzeh7o/50Hhw4IgY6gp9BBA8Cf0Qn0LXTFCsQQ+iy6D8yLYGLoR2oQQuPtT/ONVgCAR+8h+gw/t0HNRmIx+g56BFqvDDqMnteaDsFFZQeAEoSKu6o2HSdtBiANo0+pTceQWvHYpK30f8rpoBH50IIiNLpq1iNEVZ6OSJsB5FUzrpyOTwY3IkNacuwwVLNzUErfbhgNHIk+wVuxbQCdyXOw9PhR6Ng00HQ05hzegJOXiz0A16bBtXcXlDNPoBg9oHZZyMmHUesBrp8H18TOGkBhZFTr0kHBp2FrAa4m9AKQegiiW/MI9a8A4enSD5C6AK59Eb0ApG5aHWX80aF2xfLZt+DweuBb/0aofM0tDBAdg/KDp1AYDuvl/iU4kKjqx+UUCHcn+D6+BmnNanWA9MUawM/7j40AkPKCE5E6xHQSivuP/AV58wyk3pUN17hvXALX7tEawPdtY0ZLKCc4kmmqdCUFxckYiC43+N69AGlV7z+rYNF4uFYDJgBIWcGZcEGVkmko7jkIAuvD9/4lONcFYFnihJFVoKYZKkzaMb/ovYM2H9qEZBkswmZaa+rsoOGnOig/fwWFzTssnaR0dsgQUXQK2q8JhEjLEBLniWAbAShPbECIipwnKhzL26mY3I8oMyZFu3ibAOLKKNksbd/jMPrf0naV+4KMjQBhGUD55vWaZ9K4DVMQUjY+Wh2YUlu4Fw1aXAWavaierlziNH7IZFd+s374zUDUf5/Yjh7gREaByGv1+8QfAQYAF+DnFinyD5YAAAAASUVORK5CYII="
@@ -40,13 +39,11 @@
 </template>
 
 <script>
-import { smsCode,login } from "@/http/api";
-// import { password } from "@/http/api";
+
 export default {
   data() {
     return {
-      mobile:'', //手机号
-      sms: ''
+     
     };
   },
   mounted() {
@@ -54,14 +51,7 @@ export default {
   },
   created() {},
   methods: {
-    async add() {
-      let res = await smsCode({mobile:this.mobile,sms_type:'login'});
-      console.log(res); 
-    },
-    async logi(){
-        let res = await login({mobile:this.mobile,sms_code:this.sms,type:2,client:'1'});
-        console.log(res)
-    }
+    
   }
 };
 </script>
@@ -234,3 +224,4 @@ p {
   background: #f5f5f5;
 }
 </style>
+

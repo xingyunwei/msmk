@@ -10,7 +10,7 @@
         <!---->
         <div class="login">
             <div class="itp_num">
-                <input class="iptuser" v-model="mobile" placeholder="请输入手机号">
+                <input class="iptuser" v-model="phone" placeholder="请输入手机号">
                 <div class="getCAPTCHA" @click="add">获取验证码</div>
             </div>
             <div class="itp_num">
@@ -46,7 +46,9 @@ export default {
   data() {
     return {
       mobile:'', //手机号
-      sms: ''
+      sms: '',
+      shu: 60,
+       phone: "",
     };
   },
   mounted() {
@@ -54,13 +56,23 @@ export default {
   },
   created() {},
   methods: {
-    async add() {
-      let res = await smsCode({mobile:this.mobile,sms_type:'login'});
-      console.log(res); 
-    },
-    async logi(){
-        let res = await login({mobile:this.mobile,sms_code:this.sms,type:2,client:'1'});
-        console.log(res)
+   async add() {
+      const regMobile = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+      if (!regMobile.test(this.phone) || this.pnone == "") {
+        return this.$toast("手机号不符规则");
+      } else {
+        this.spp = true;
+        var time = setInterval(() => {
+          this.shu--;
+          if (this.shu == 0) {
+            this.shu = 60;
+            clearInterval(time);
+            this.spp = false;
+          }
+        },1000);
+        let res = await smsCode({ mobile: this.phone, sms_type: "login" });
+        console.log(res);
+      }
     }
   }
 };

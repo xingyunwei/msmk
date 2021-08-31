@@ -6,8 +6,8 @@ import  require  from  './require'
 export  function  smsCode(arg) {    
     return  service({         url: require.smsCode,         data: arg,         method: 'post'     })
 }
-export  function  login() {    
-    return  service({         url: require.login,         data: {},         method: 'post'     })
+export  function  login(arg) {    
+    return  service({         url: require.login,         data: arg,         method: 'post'     })
 }
 export  function  banner(arg) {    
     return  service({         url: require.banner,         data: arg,         method: 'get'     })
@@ -16,5 +16,12 @@ export  function  appIndex(arg) {    
     return  service({         url: require.appIndex,         data: arg,         method: 'get'     })
 }
 export  function  password(arg) {    
-    return  service({         url: require.password,         data: arg,         method: 'post'     })
+    return  service({         url: require.pass,         data: arg,         method: 'post'     })
 }
+// export function password(arg) {
+//     return service({
+//         url: require.pass,
+//         data: arg,
+//         method: 'post'
+//     })
+// }

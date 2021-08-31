@@ -1,6 +1,6 @@
 <template>
     <div class="zix">
-       
+       zix
     </div>
 </template>
 

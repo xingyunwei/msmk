@@ -1,109 +1,109 @@
 <template>
-    <div class="shouy">
-        <div class="box">
-            <img class="sign" src="http://120.53.31.103:86/img/icon-sign.96f11c58.png" alt="">
-            <van-search shape="round" background="#ffffff" placeholder="请输入搜索关键词"/>
-            <i class="message"></i>
-        </div>
-        <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-            <van-swipe-item>
-                <img
-                    class="img2"
-                    src="https://img2.baidu.com/it/u=1605987499,4009355285&fm=26&fmt=auto&gp=0.jpg"
-                    alt=""
-                >
-            </van-swipe-item>
-            <van-swipe-item>
-                <img
-                    class="img2"
-                    src="https://img1.baidu.com/it/u=3766151103,2483188409&fm=26&fmt=auto&gp=0.jpg"
-                    alt=""
-                >
-            </van-swipe-item>
-            <van-swipe-item>
-                <img
-                    class="img2"
-                    src="https://img0.baidu.com/it/u=3998012246,2453684564&fm=26&fmt=auto&gp=0.jpg"
-                    alt=""
-                >
-            </van-swipe-item>
-        </van-swipe>
-        <!---->
-        <van-grid square border="">
-            <van-grid-item icon="photo-o" text="文字"/>
-            <van-grid-item icon="photo-o" text="文字"/>
-            <van-grid-item icon="photo-o" text="文字"/>
-            <van-grid-item icon="photo-o" text="文字"/>
-        </van-grid>
-        <!---->
-        <div class="js" v-for="(item,index) in good" :key="index" v-if="index!==1">
-            <div class="tis">
-                <p class="tis_1">{{item.channel_info.name}}</p>
-                <p class="tis_2">更多></p>
-            </div>
-            <div class="tis_di" v-for="(it,k) in item.list" :key="k">
-                <div class="di_1">
-                    <div class="im">
-                        <img
-                            :src="it.teacher_avatar"
-                            alt=""
-                        >
-                    </div>
-                    <div class="di_2">
-                        <p>{{it.introduction}}</p>
-                        <span>{{it.teacher_name}}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!---->
-        
-         <div class="js" v-for="(item,key) in good" :key="key" v-if="key===1">
-            <div class="tis">
-                <p class="tis_1">{{item.channel_info.name}}</p>
-                <p class="tis_2">更多></p>
-            </div>
-            <div class="tis_di" v-for="(it,k) in item.list" :key="k">
-                <div class="di_1">
-                    <div class="im">
-                        <img
-                            :src="it.cover_img"
-                            alt=""
-                        >
-                    </div>
-                    <div class="di_2">
-                        <p>{{it.title}}</p>
-                        <span>{{it.sales_num}}人已报名</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!---->
-        <div class="tb"></div>
+  <div class="shouy">
+    <div class="box">
+      <img class="sign" src="http://120.53.31.103:86/img/icon-sign.96f11c58.png" alt="">
+      <van-search shape="round" background="#ffffff" placeholder="请输入搜索关键词"/>
+      <i class="message"></i>
     </div>
+    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+      <van-swipe-item>
+        <img
+          class="img2"
+          src="https://img2.baidu.com/it/u=1605987499,4009355285&fm=26&fmt=auto&gp=0.jpg"
+          alt=""
+        >
+      </van-swipe-item>
+      <van-swipe-item>
+        <img
+          class="img2"
+          src="https://img1.baidu.com/it/u=3766151103,2483188409&fm=26&fmt=auto&gp=0.jpg"
+          alt=""
+        >
+      </van-swipe-item>
+      <van-swipe-item>
+        <img
+          class="img2"
+          src="https://img0.baidu.com/it/u=3998012246,2453684564&fm=26&fmt=auto&gp=0.jpg"
+          alt=""
+        >
+      </van-swipe-item>
+    </van-swipe>
+    <!---->
+    <van-grid square border="">
+      <van-grid-item icon="photo-o" text="文字"/>
+      <van-grid-item icon="photo-o" text="文字"/>
+      <van-grid-item icon="photo-o" text="文字"/>
+      <van-grid-item icon="photo-o" text="文字"/>
+    </van-grid>
+    <!---->
+    <div class="js" v-for="(item,index) in good" :key="index" v-if="index!==1">
+      <div class="tis">
+        <p class="tis_1">{{item.channel_info.name}}</p>
+        <p class="tis_2">更多></p>
+      </div>
+      <div class="tis_di" v-for="it in item.list" :key="it.teacher_id">
+        <div class="di_1" @click="xq(it.teacher_id)">
+          <div class="im">
+            <img :src="it.teacher_avatar" alt="">
+          </div>
+          <div class="di_2">
+            <p>{{it.introduction}}</p>
+            <span>{{it.teacher_name}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!---->
+    <div class="js" v-for="(item,key) in good" :key="key" v-if="key===1">
+      <div class="tis">
+        <p class="tis_1">{{item.channel_info.name}}</p>
+        <p class="tis_2">更多></p>
+      </div>
+      <div class="tis_di" v-for="(it,k) in item.list" :key="k">
+        <div class="di_1">
+          <div class="im">
+            <img :src="it.cover_img" alt="">
+          </div>
+          <div class="di_2">
+            <p>{{it.title}}</p>
+            <span>{{it.sales_num}}人已报名</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!---->
+    <div class="tb"></div>
+  </div>
 </template>
 
 <script>
 import { banner } from "@/http/api";
-import {appIndex } from "@/http/api";
+import { appIndex } from "@/http/api";
 
 export default {
   data() {
     return {
-        good:[]
+      good: []
     };
   },
-   async created() {
+  async created() {
     let res = await banner();
     console.log(res);
-    let list = await appIndex()
-    console.log(list.data.data)
-    this.good=list.data.data
-    console.log(this.good)
+    let list = await appIndex();
+    console.log(list.data.data);
+    this.good = list.data.data;
+    console.log(this.good);
   },
-  
+
   mounted() {},
-  methods: {}
+  methods: {
+    xq(id) {
+      //     // console.log(id)
+      //     // this.$router.push('/xq')
+      //     // this.$emit('/xq?id'+id)
+      this.$router.push("/xq?cid=" + id);
+    }
+  }
 };
 </script>
 

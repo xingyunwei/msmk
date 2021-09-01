@@ -3,5 +3,7 @@ module.exports = {    
         login: '/login',
     banner: '/banner',
     appIndex: '/recommend/appIndex',
-    pass: 'password',
+    pass: '/password',
+    teacher: "/teacher/",
+    courseInfo: '/courseInfo/basis_id='
 }

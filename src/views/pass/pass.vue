@@ -55,6 +55,8 @@ export default {
           sms_code:`${this.yzm}`,
         };
         let res = await password(obj);
+    
+        this.$router.push('/logins')
         console.log(res);
       }
     }

@@ -23,6 +23,7 @@
             <div class="dae">
                 <van-calendar
                     @select="signIn"
+                    :value="date"
                     :show-confirm="false"
                     :show-mark="false"
                     :lazy-render="false"
@@ -59,6 +60,7 @@ export default {
   data() {
     return {
       show: false,
+        date: '',
       uid: '',
       list: [
         {
@@ -75,7 +77,7 @@ export default {
   mounted() {},
   methods: {
     signIn() {
-     console.log('111')
+     return `${date.getMonth() + 1}/${date.getDate()}`;
     },
     showPopup() {
       this.show = true;

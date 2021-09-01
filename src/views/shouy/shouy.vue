@@ -36,13 +36,13 @@
       <van-grid-item icon="photo-o" text="文字"/>
     </van-grid>
     <!---->
-    <div class="js" v-for="(item,index) in good" :key="index" v-if="index!==1">
-      <div class="tis">
+    <div class="js" v-for="(item,index) in good" :key="item.channel_info.id" v-if="index==0">
+      <div class="tis" @click="$router.push('/kec?id='+index)">
         <p class="tis_1">{{item.channel_info.name}}</p>
         <p class="tis_2">更多></p>
       </div>
       <div class="tis_di" v-for="it in item.list" :key="it.teacher_id">
-        <div class="di_1" @click="xq(it.teacher_id)">
+        <div class="di_1" @click="xqlist(it.teacher_id)">
           <div class="im">
             <img :src="it.teacher_avatar" alt="">
           </div>
@@ -59,8 +59,8 @@
         <p class="tis_1">{{item.channel_info.name}}</p>
         <p class="tis_2">更多></p>
       </div>
-      <div class="tis_di" v-for="(it,k) in item.list" :key="k">
-        <div class="di_1">
+      <div class="tis_di" v-for="it in item.list" :key="it.id">
+        <div class="di_1" @click="kecq(it.id)">
           <div class="im">
             <img :src="it.cover_img" alt="">
           </div>
@@ -71,6 +71,25 @@
         </div>
       </div>
     </div>
+    <!---->
+    <div class="js" v-for="(item,index) in good" :key="item.id" v-if="index==2">
+      <div class="tis" @click="$router.push('/kec?id='+item.id)">
+        <p class="tis_1">{{item.channel_info.name}}</p>
+        <p class="tis_2">更多></p>
+      </div>
+      <div class="tis_di" v-for="it in item.list" :key="it.teacher_id">
+        <div class="di_1" @click="xq(it.teacher_id)">
+          <div class="im">
+            <img :src="it.teacher_avatar" alt="">
+          </div>
+          <div class="di_2">
+            <p>{{it.introduction}}</p>
+            <span>{{it.teacher_name}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!---->
     <!---->
     <div class="tb"></div>
   </div>
@@ -88,20 +107,26 @@ export default {
   },
   async created() {
     let res = await banner();
-    console.log(res);
+    // console.log(res);
     let list = await appIndex();
-    console.log(list.data.data);
+    // console.log(list.data.data);
     this.good = list.data.data;
     console.log(this.good);
   },
 
   mounted() {},
   methods: {
-    xq(id) {
+    xqlist(cid) {
+      // console.log(cid)
       //     // console.log(id)
       //     // this.$router.push('/xq')
       //     // this.$emit('/xq?id'+id)
-      this.$router.push("/xq?cid=" + id);
+      this.$router.push('/xq?id=' + cid);
+    },
+    kecq(cid){
+      // console.log(cid)
+      this.$router.push('/kecq?basis_id=' + cid);
+
     }
   }
 };

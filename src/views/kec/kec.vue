@@ -1,8 +1,8 @@
 <template>
     <div class="kec">
         <div class="js" v-for="(item,index) in good" :key="index" v-if="index==2">
-            <div class="tis_di" v-for="(it,k) in item.list" :key="k">
-                <div class="di_1">
+            <div class="tis_di"  v-for="it in item.list" :key="it.teacher_id">
+                <div class="di_1" @click="xqlist(it.teacher_id)">
                     <div class="im">
                         <img :src="it.teacher_avatar" alt="">
                     </div>
@@ -22,17 +22,27 @@ import { appIndex } from "@/http/api";
 export default {
   data() {
     return {
+      id:this.$route.query.id,
       good: []
     };
   },
   async created() {
-    let list = await appIndex();
-    console.log(list.data.data);
+    let list = await appIndex(this.id);
+    console.log(this.id)
+    // console.log(list.data.data);
     this.good = list.data.data;
     console.log(this.good);
   },
   mounted() {},
-  methods: {}
+  methods: {
+     xqlist(cid) {
+      // console.log(cid)
+      //     // console.log(id)
+      //     // this.$router.push('/xq')
+      //     // this.$emit('/xq?id'+id)
+      this.$router.push('/xq?id=' + cid);
+    },
+  }
 };
 </script>
 

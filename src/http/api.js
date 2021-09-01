@@ -18,10 +18,16 @@ export  function  appIndex(arg) {    
 export  function  password(arg) {    
     return  service({         url: require.pass,         data: arg,         method: 'post'     })
 }
+export  function  teacher(arg) {    
+    return  service({         url: require.teacher + arg,         data: arg,         method: 'get'     })
+}
+export  function  courseInfo(arg) {    
+    return  service({         url: require.courseInfo + arg,         data: arg,         method: 'get'     })
+}
 // export function password(arg) {
 //     return service({
 //         url: require.pass,
 //         data: arg,
 //         method: 'post'
 //     })
-// }
+// }courseInfo/basis_id=xxx

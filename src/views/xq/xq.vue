@@ -2,15 +2,15 @@
     <div class="xq">
         <div class="xq_1">
             <div class="left">
-                <img :src="good.teacher.avatar">
+                <img :src="lists.avatar">
             </div>
-            <div class="right">{{good.teacher.real_name}}</div>
+            <div class="right">{{lists.real_name}}</div>
         </div>
         <!---->
         <van-tabs v-model="active">
             <van-tab title="讲师介绍">
              <p class="p3">老师介绍</p>
-             <p>{{good.teacher.introduction}}</p>
+             <p>{{lists.introduction}}</p>
             </van-tab>
             <van-tab title="主讲课程">
              <!---->
@@ -42,6 +42,7 @@ export default {
     return {
       good: [],
       goods:[],
+      lists:[],
       id: this.$route.query.id,
        active: 2,
     };
@@ -52,13 +53,20 @@ export default {
     let list = await teacher(this.id);
     console.log(list);
     this.good = list.data.data;
+    this.lists = list.data.data.teacher;
      let res = await appIndex();
     console.log(res.data.data);
     this.goods = res.data.data;
     console.log(this.good);
     // console.log(this.good);
   },
-  methods: {}
+  methods: {
+     kecq(cid){
+      // console.log(cid)
+      this.$router.push('/kecq?basis_id=' + cid);
+
+    }
+  }
 };
 </script>
 

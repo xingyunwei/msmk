@@ -1,68 +1,85 @@
 <template>
-    <div class="kecq">
-        <!---->
-        <div class="imw">
-            <img :src="good.info.cover_img" alt="">
-        </div>
-        <!---->
-        <div class="kecq_1">
-            <p>{{good.info.title}}</p>
-            <p class="p4">共{{good.info.status}}课时 | {{good.info.sales_num}}已报名</p>
-            <p class="p4">开课时间：2021/07/08 00:00 - 2021/07/09 00:00</p>
-            <p class="p5">免费</p>
-        </div>
-        <!---->
-        <div class="fuw"  @click="show = true">
-            <div>服务:售后服务</div>
-            <div>详情></div>
-        </div>
-        <van-action-sheet v-model="show" title="售后服务">
-            <div class="content">
-              <p>课程售后</p>
-              <p>多谢关注  新课程敬请期待</p>
-            </div>
-        </van-action-sheet>
-        <!---->
-        <div class="td">
-            <div class="jx">教学团队</div>
-            <div class="jx_0">
-                <div class="jx_1" v-for="(item,index) in good.teachers" :key="index">
-                    <div>
-                        <img :src="item.avatar" alt="">
-                    </div>
-                    <p>{{item.teacher_name}}</p>
-                </div>
-            </div>
-        </div>
-        <!---->
-        <van-tabs v-model="active">
-            <van-tab title="课程介绍">
-                <p>课程介绍</p>
-                <p>crazy english</p>
-                <p>so pretty</p>
-            </van-tab>
-            <van-tab title="课程大纲">内容 2</van-tab>
-            <van-tab title="课程评价">内容 3</van-tab>
-        </van-tabs>
-        <!---->
-        <div class="boam">
-            <div>立即报名</div>
-        </div>
+  <div class="kecq">
+    <!---->
+    <div class="imw">
+      <img :src="lists.cover_img" alt="">
     </div>
+    <!---->
+    <div class="kecq_1">
+      <p>{{lists.title}}</p>
+      <p class="p4">共{{lists.status}}课时 | {{lists.sales_num}}已报名</p>
+      <p class="p4">开课时间：2021/07/08 00:00 - 2021/07/09 00:00</p>
+      <p class="p5">免费</p>
+    </div>
+    <!---->
+    <div class="fuw" @click="show = true">
+      <div>服务:售后服务</div>
+      <div>详情></div>
+    </div>
+    <van-action-sheet v-model="show" title="售后服务">
+      <div class="content">
+        <p>课程售后</p>
+        <p>多谢关注 新课程敬请期待</p>
+      </div>
+    </van-action-sheet>
+    <!---->
+    <div class="td">
+      <div class="jx">教学团队</div>
+      <div class="jx_0">
+        <div
+          class="jx_1"
+          v-for="item in good.teachers"
+          :key="item.teacher_id"
+          @click="xqlist(item.teacher_id)"
+        >
+          <div>
+            <img :src="item.avatar" alt="">
+          </div>
+          <p>{{item.teacher_name}}</p>
+        </div>
+      </div>
+    </div>
+    <!---->
+    <div class="act">
+      <van-tabs v-model="active">
+        <van-tab title="课程介绍">
+          <p>课程介绍</p>
+          <p>crazy english</p>
+          <p>so pretty</p>
+        </van-tab>
+        <van-tab title="课程大纲">内容 2</van-tab>
+        <van-tab title="课程评价">内容 3</van-tab>
+      </van-tabs>
+    </div>
+    <!---->
+    <div class="boam">
+      <div>立即报名</div>
+    </div>
+    <!---->
+    <div class="zw">
+      <div>课程评论</div>
+      <div class="z">
+        <p>
+          <img src="http://120.53.31.103:86/img/empty.0d284c2e.png" alt="">
+        </p>
+        <span>暂无评论</span>
+      </div>
+    </div>
+    <div class="di"></div>
+  </div>
 </template>
 
 <script>
 import { courseInfo } from "@/http/api";
-
 
 export default {
   data() {
     return {
       basis_id: this.$route.query.basis_id,
       good: [],
-      active: 2,
-      show:false,
-      liss:[]
+      active: 0,
+      show: false,
+      lists: []
     };
   },
   mounted() {},
@@ -70,29 +87,67 @@ export default {
     console.log(this.basis_id);
     let res = await courseInfo(this.basis_id);
     console.log(res);
-    this.liss= res.data.data;
-   
+    this.good = res.data.data;
+    this.lists = res.data.data.info;
     // console.log(this.good);
   },
-  methods: {}
+  methods: {
+    xqlist(cid) {
+      // console.log(cid)
+      //     // console.log(id)
+      //     // this.$router.push('/xq')
+      //     // this.$emit('/xq?id'+id)
+      this.$router.push("/xq?id=" + cid);
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss" >
-.content {
-    padding: 16px 16px 160px;
-    p{
-        margin-top: 10px;
-        font-size: 13px;
-    }
+.act {
+  width: 100%;
+  height: 100px;
+  background: white;
+  p {
+    font-size: 13px;
   }
+}
+.zw {
+  width: 100%;
+  height: 200px;
+  background: white;
+  padding: 10px 10px;
+  margin-top: 10px;
+  .z {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  img {
+    width: 40vw;
+    height: 40vw;
+  }
+}
+.content {
+  padding: 16px 16px 160px;
+  p {
+    margin-top: 10px;
+    font-size: 13px;
+  }
+}
+.di {
+  width: 100%;
+  height: 50px;
+}
 .boam {
   width: 100%;
   height: 40px;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
   background: white;
+  border: 1px solid white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   div {
     width: 90%;
     height: 100%;

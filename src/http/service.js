@@ -6,7 +6,7 @@ const  service  =  axios.create({  
     baseURL:  baseUrl,
       // url = base api url + request url
     //   withCredentials: true, // send cookies when cross-domain requests
-      timeout:  6000  // request timeout
+      timeout:  5000  // request timeout
 })
 let  loading
     //请求拦截器

@@ -54,8 +54,14 @@
       </div>
     </div>
     <!---->
-    <div class="js" v-for="(item,key) in good" :key="key" v-if="key===1">
-      <div class="tis">
+    <div
+      class="js"
+      v-for="(item,key) in good"
+      :key="item.id"
+      v-if="key===1"
+      
+    >
+      <div class="tis" @click="course(item.id)">
         <p class="tis_1">{{item.channel_info.name}}</p>
         <p class="tis_2">更多></p>
       </div>
@@ -116,17 +122,20 @@ export default {
 
   mounted() {},
   methods: {
+    course(cid) {
+      console.log(cid)
+      this.$router.push("/course?id=" + cid);
+    },
     xqlist(cid) {
       // console.log(cid)
       //     // console.log(id)
       //     // this.$router.push('/xq')
       //     // this.$emit('/xq?id'+id)
-      this.$router.push('/xq?id=' + cid);
+      this.$router.push("/xq?id=" + cid);
     },
-    kecq(cid){
+    kecq(cid) {
       // console.log(cid)
-      this.$router.push('/kecq?basis_id=' + cid);
-
+      this.$router.push("/kecq?basis_id=" + cid);
     }
   }
 };

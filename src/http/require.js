@@ -9,4 +9,5 @@ module.exports = {    
     information: '/information/classify',
     informations: '/information/index',
     informationq: '/information/detail',
+    teachers: '/teacher/mainCourse'
 }

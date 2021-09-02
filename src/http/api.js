@@ -33,6 +33,9 @@ export  function  informations(arg) {    
 export  function  informationq(arg) {    
     return  service({         url: require.informationq,         data: arg,         method: 'post'     })
 }
+export  function  teachers(arg) {    
+    return  service({         url: require.teachers,         data: arg,         method: 'post'     })
+}
 // export function password(arg) {
 //     return service({
 //         url: require.pass,

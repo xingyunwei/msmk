@@ -18,6 +18,14 @@
             </div>
           </div>
         </div>
+        <!---->
+        <div v-show="show"  class="k">
+          <div>
+            <img src="	http://120.53.31.103:86/img/empty.0d284c2e.png" alt="">
+            <p>暂无咨询</p>
+          </div>
+        </div>
+        <!---->
       </van-tab>
     </van-tabs>
   </div>
@@ -31,6 +39,7 @@ export default {
     return {
       good: [],
       lists: [],
+      show:false,
       from: {
         page: 1,
         limit: 10,
@@ -55,21 +64,38 @@ export default {
   },
   mounted() {},
   methods: {
-    
     async aa(i) {
       this.from.classify_id = this.good[i].id;
       let res = await informations(this.from);
       this.lists = res.data.data.list;
       console.log(this.lists);
+       if(this.lists.length==0){
+        this.show=true
+      }else{
+        this.show=false
+      }
     },
-    zxq(cid){
-      this.$router.push('/zxq?id='+cid)
+    zxq(cid) {
+      this.$router.push("/zxq?id=" + cid);
     }
   }
 };
 </script>
 
 <style scoped lang="scss" >
+.k {
+  width: 100%;
+  height: 300px;
+
+  div {
+    margin: auto;
+    text-align: center;
+  }
+  img {
+    width: 40vw;
+    height: 40vw;
+  }
+}
 .left {
   width: 30%;
   height: 100%;

@@ -24,6 +24,15 @@ export  function  teacher(arg) {    
 export  function  courseInfo(arg) {    
     return  service({         url: require.courseInfo + arg,         data: arg,         method: 'get'     })
 }
+export  function  information(arg) {    
+    return  service({         url: require.information,         data: arg,         method: 'get'     })
+}
+export  function  informations(arg) {    
+    return  service({         url: require.informations,         data: arg,         method: 'post'     })
+}
+export  function  informationq(arg) {    
+    return  service({         url: require.informationq,         data: arg,         method: 'post'     })
+}
 // export function password(arg) {
 //     return service({
 //         url: require.pass,

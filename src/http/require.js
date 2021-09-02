@@ -5,5 +5,8 @@ module.exports = {    
     appIndex: '/recommend/appIndex',
     pass: '/password',
     teacher: "/teacher/",
-    courseInfo: '/courseInfo/basis_id='
+    courseInfo: '/courseInfo/basis_id=',
+    information: '/information/classify',
+    informations: '/information/index',
+    informationq: '/information/detail',
 }
